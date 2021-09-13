@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Momkn</string>
+    <string name="sign_up">SignUp</string>
+    <string name="todo">Logo</string>
+    <string name="already_Registred">AlreadyRegistred ?  </string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="login">Login</string>
+    <string name="donot_hava_account">Do not have Account?  </string>
+    <string name="Ok">Ok</string>
+    <string name="loading">Loading</string>
+    <string name="Register">Register</string>
+</resources>

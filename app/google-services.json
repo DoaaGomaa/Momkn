@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1058798469756",
+    "project_id": "momkn-700b5",
+    "storage_bucket": "momkn-700b5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1058798469756:android:6477ea41c5fd41d699fff9",
+        "android_client_info": {
+          "package_name": "com.example.momkn"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1058798469756-6k4ul3r8c60b2h3ahrgv9ehfthlbmh52.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyATHwRC9QhFVMJ3zMC9iQ5GYrkmI-_8ST8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1058798469756-6k4ul3r8c60b2h3ahrgv9ehfthlbmh52.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
