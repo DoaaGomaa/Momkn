@@ -1,14 +1,13 @@
 package com.example.momkn.login
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.momkn.R
 import com.example.momkn.base.BaseActivity
 import com.example.momkn.databinding.FragmentLogonBinding
 import com.example.momkn.register.RegisterActivity
-import com.example.momkn.view.MainActivity
+import com.example.momkn.home.MainActivity
 import com.example.momkn.viewmodel.LoginViewModel
 
 class LoginActivity : BaseActivity<FragmentLogonBinding, LoginViewModel>(), NavigatorLogin {

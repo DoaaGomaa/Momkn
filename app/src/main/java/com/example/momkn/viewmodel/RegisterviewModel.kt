@@ -58,7 +58,7 @@ class RegisterviewModel(application: Application): BaseViewModel<NavigatorRegist
         if(password.get().isNullOrEmpty()||password.get()?.length ?:0 <6){
             //show Error
             passwordError.set(true)
-            message.value = "pleasw enter a valid Password"
+           message.value = "please enter a valid Data , Password should be more than 6 characters"
             isValid = false
 
         }else {

@@ -6,7 +6,7 @@ import com.example.momkn.R
 import com.example.momkn.base.BaseActivity
 import com.example.momkn.databinding.FragmentRegisterBinding
 import com.example.momkn.login.LoginActivity
-import com.example.momkn.view.MainActivity
+import com.example.momkn.home.MainActivity
 import com.example.momkn.viewmodel.RegisterviewModel
 
 class RegisterActivity : BaseActivity<FragmentRegisterBinding, RegisterviewModel>(), NavigatorRegister {

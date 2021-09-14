@@ -10,7 +10,7 @@ import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.Observer
 import com.example.momkn.R
 
-open  abstract class BaseActivity<T:ViewDataBinding,V: BaseViewModel<*>> : AppCompatActivity() {
+ abstract class BaseActivity<T:ViewDataBinding,V: BaseViewModel<*>> : AppCompatActivity() {
     lateinit var activity: AppCompatActivity;
     lateinit var viewDataBinding: T
     lateinit var viewModel: V
