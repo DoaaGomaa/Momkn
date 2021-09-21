@@ -4,7 +4,11 @@ import android.app.Application
 import androidx.databinding.ObservableField
 import androidx.lifecycle.MutableLiveData
 import com.example.momkn.base.BaseViewModel
+import com.example.momkn.fireStoreDataBase.UsersDao
+import com.example.momkn.fireStoreDataBase.model.DataHolder
+import com.example.momkn.fireStoreDataBase.model.User
 import com.example.momkn.login.NavigatorLogin
+import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 
@@ -19,7 +23,19 @@ class LoginViewModel(application: Application): BaseViewModel<NavigatorLogin>(){
     init {
         auth = FirebaseAuth.getInstance()
         if(auth.currentUser != null){
-            authUser.value = auth.currentUser
+           // authUser.value = auth.currentUser
+            UsersDao.getUser(auth.currentUser?.uid?:"", OnCompleteListener {
+                if (it.isSuccessful) {
+                    val dataBaseUser = it.result?.toObject(User::class.java)
+                    DataHolder.dataBaseUser = dataBaseUser
+                    DataHolder.authUser = auth.currentUser
+                    authUser.value = auth.currentUser
+                }else{
+                    message.value = it.exception?.localizedMessage
+                }
+            })
+
+
         }    }
     fun login(){
         if(isValidData()){
@@ -30,7 +46,18 @@ class LoginViewModel(application: Application): BaseViewModel<NavigatorLogin>(){
                     showLoading.value=false
                     if(it.isSuccessful){
                         //gotoHomeScreen
-                        authUser.value = auth.currentUser
+
+                        UsersDao.getUser(auth.currentUser?.uid?:"", OnCompleteListener {
+                            if (it.isSuccessful) {
+                                val dataBaseUser = it.result?.toObject(User::class.java)
+                                DataHolder.dataBaseUser = dataBaseUser
+                                DataHolder.authUser = auth.currentUser
+                                authUser.value = auth.currentUser
+                            }else{
+                                message.value = it.exception?.localizedMessage
+                            }
+                        })
+
                     }else{
                         message.value = it.exception?.localizedMessage
                     }

@@ -3,7 +3,11 @@ import android.app.Application
 import androidx.databinding.ObservableField
 import androidx.lifecycle.MutableLiveData
 import com.example.momkn.base.BaseViewModel
+import com.example.momkn.fireStoreDataBase.UsersDao
+import com.example.momkn.fireStoreDataBase.model.DataHolder
+import com.example.momkn.fireStoreDataBase.model.User
 import com.example.momkn.register.NavigatorRegister
+import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 
@@ -29,8 +33,20 @@ class RegisterviewModel(application: Application): BaseViewModel<NavigatorRegist
                 .addOnCompleteListener({
                     showLoading.value=false
                     if(it.isSuccessful){
-                        //gotoHomeScreen
-                        navigaror?.openHome();
+                        val newUser = User()
+                        newUser.id = it.result?.user?.uid?:""
+                        newUser.name= userName.get()?:""
+                        newUser.email = email.get()?:""
+                        UsersDao.addUser(newUser, OnCompleteListener {
+                            if (it.isSuccessful){
+                                DataHolder.dataBaseUser = newUser
+                                DataHolder.authUser = auth.currentUser
+                            navigaror?.openHome();
+                            }else{
+                                message.value="faild to register user ..try again later " + it.exception?.localizedMessage
+                            }
+                        })
+
                     }else{
                         message.value = it.exception?.localizedMessage
                     }
