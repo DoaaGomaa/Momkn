@@ -4,24 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <variable
-            name="vm"
-            type="com.example.momkn.viewmodel.HomeViewModel" />
+<variable
+    name="vm"
+    type="com.example.momkn.viewmodel.HomeViewModel" />
 
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".home.MainActivity">
-        <TextView
-            android:id="@+id/txtd"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Welcome to Home Screen"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+        <com.google.android.gms.maps.MapView
+            android:id="@+id/map_view"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent" />
 
 
 
