@@ -9,19 +9,34 @@
     type="com.example.momkn.viewmodel.HomeViewModel" />
 
     </data>
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
+        android:orientation="vertical"
+        android:weightSum="10"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".home.MainActivity">
         <com.google.android.gms.maps.MapView
             android:id="@+id/map_view"
-            android:layout_height="match_parent"
-            android:layout_width="match_parent" />
+           android:layout_height="0dp"
+            android:layout_weight="9"
+            android:layout_width="match_parent"
+
+            />
+        <ImageView
+            android:id="@+id/logout"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:adjustViewBounds="true"
+            android:src="@drawable/ic_logout"
+            android:onClick="logout"
+            android:background="@color/browser_actions_bg_grey"
+            android:layout_weight="1"
+            />
 
 
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 
 
 

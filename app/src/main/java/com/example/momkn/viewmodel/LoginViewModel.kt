@@ -18,12 +18,13 @@ class LoginViewModel(application: Application): BaseViewModel<NavigatorLogin>(){
     val emailError = ObservableField<Boolean>()
     val passwordError = ObservableField<Boolean>()
     val authUser = MutableLiveData<FirebaseUser>()
+companion object{
+    var auth :FirebaseAuth =FirebaseAuth.getInstance()
+}
 
-    private var auth :FirebaseAuth
     init {
-        auth = FirebaseAuth.getInstance()
+        //auth = FirebaseAuth.getInstance()
         if(auth.currentUser != null){
-           // authUser.value = auth.currentUser
             UsersDao.getUser(auth.currentUser?.uid?:"", OnCompleteListener {
                 if (it.isSuccessful) {
                     val dataBaseUser = it.result?.toObject(User::class.java)
@@ -78,7 +79,7 @@ class LoginViewModel(application: Application): BaseViewModel<NavigatorLogin>(){
         } else {
             emailError.set(false)
         }
-        if(password.value.isNullOrEmpty()){
+        if(password.value.isNullOrBlank()){
             //show Error
             passwordError.set(true)
            // message.value = "please enter a valid Password"

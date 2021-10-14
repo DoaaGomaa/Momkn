@@ -75,112 +75,68 @@
                 android:background="@drawable/background_btn_login">
 
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_marginTop="30dp"
-                    android:layout_marginBottom="30dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginTop="18dp"
-                        android:layout_marginRight="16dp"
-                        android:orientation="horizontal"
-                        android:weightSum="5">
-
-                        <ImageView
-                            android:layout_width="50dp"
-                            android:layout_height="30dp"
-                            android:layout_gravity="center"
-                            app:srcCompat="@drawable/ic_account" />
-
-
-                        <EditText
-                            android:id="@+id/email_edit"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_gravity="center"
-                            android:layout_weight="2"
-                            android:background="@drawable/background_txt"
-                            android:fontFamily="sans-serif-condensed-medium"
-                            android:hint="Email"
-                            android:text="@={vm.email}"
-                            android:inputType="textEmailAddress"
-                            android:paddingStart="12dp"
-                            android:textColorHint="@color/gray"
-                            android:paddingLeft="12dp" />
-                        <TextView
-                            android:id="@+id/email_error"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:textColor="#ff0000"
-                            android:layout_weight="3"
-                            android:visibility="@{vm.emailError?View.VISIBLE:View.GONE}"
-
-                            android:text="please enter valid email"
-                            />
-
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginTop="18dp"
-                        android:layout_marginRight="16dp"
-                        android:orientation="horizontal"
-                        android:weightSum="5">
-
-                        <ImageView
-                            android:layout_width="50dp"
-                            android:layout_height="30dp"
-                            android:layout_gravity="center"
-                            app:srcCompat="@drawable/ic_lock" />
-
-                        <com.google.android.material.textfield.TextInputLayout
+                        android:layout_height="0dp"
+                        android:orientation="vertical"
+                        android:layout_marginTop="15dp"
+                        android:layout_weight="7"
+                        >
+                        <com.google.android.material.textfield.TextInputEditText
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:textColorHint="@color/gray"
-                            app:boxStrokeColor="#F16950"
-                            app:hintTextColor="@color/gray"
-                            app:passwordToggleEnabled="true"
-                            app:passwordToggleTint="@color/gray"
-                            tools:ignore="MissingConstraints">
+                            android:layout_marginStart="15dp"
+                            android:hint="Email"
+                            android:text="@={vm.email}"
+                            android:inputType="textEmailAddress" />
+                        <TextView
+                            android:id="@+id/email_error"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="#ff0000"
+                            android:layout_marginStart="15dp"
+                            android:visibility="@{vm.emailError?View.VISIBLE:View.GONE}"
 
-                            <EditText
-                                android:id="@+id/pass_edit"
+                            android:text="plese write valid email"
+                            />
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/text_input_password"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:errorEnabled="true"
+                            app:passwordToggleEnabled="true"
+                            android:layout_marginTop="12dp">
+
+                            <com.google.android.material.textfield.TextInputEditText
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:background="@drawable/background_txt"
-                                android:ems="5"
-                                android:fontFamily="sans-serif-condensed-medium"
                                 android:hint="Password"
+                                android:layout_marginStart="15dp"
+                                android:layout_marginTop="20dp"
                                 android:text="@={vm.password}"
-                                android:inputType="textPassword"
-                                android:textColor="@color/black" />
+                                android:inputType="textPassword" />
                             <TextView
                                 android:id="@+id/pass_error"
-                                android:layout_width="wrap_content"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:textColor="#ff0000"
-                                android:ems="5"
-                                android:visibility="@{vm.emailError?View.VISIBLE:View.GONE}"
-
-                                android:text="please enter valid email"
+                                android:layout_marginStart="15dp"
+                                android:visibility="@{vm.passwordError?View.VISIBLE:View.GONE}"
+                                android:text="please enter valid password"
                                 />
-
                         </com.google.android.material.textfield.TextInputLayout>
+
+
                     </LinearLayout>
 
 
                     <Button
                         android:id="@+id/btn_log_in"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_weight="2"
                         android:layout_marginLeft="16dp"
                         android:layout_marginTop="20dp"
                         android:layout_marginRight="16dp"
@@ -224,9 +180,9 @@
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-                </LinearLayout>
-
             </LinearLayout>
+
+
         </androidx.cardview.widget.CardView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

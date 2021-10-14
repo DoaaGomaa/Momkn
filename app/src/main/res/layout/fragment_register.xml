@@ -5,6 +5,7 @@
 
     <data>
         <import type="android.view.View"/>
+        <import type="android.util.SparseArray"/>
         <variable
             name="vm"
             type="com.example.momkn.viewmodel.RegisterviewModel" />
@@ -26,7 +27,7 @@
                 android:weightSum="2"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginTop="20dp">
+                android:layout_marginTop="10dp">
 
                 <TextView
                     android:id="@+id/text"
@@ -44,7 +45,7 @@
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:layout_gravity="center"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="10dp"
                     android:layout_weight="1"
                     android:contentDescription="@string/todo"
                     android:src="@drawable/alahly"
@@ -78,143 +79,120 @@
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:orientation="vertical"
-                        android:layout_marginTop="30dp"
-                        android:layout_marginBottom="30dp"
+                        android:layout_marginTop="15dp"
                         >
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginTop="18dp"
-                            android:layout_marginRight="16dp"
-                            android:orientation="horizontal"
-                            android:weightSum="5">
-
-                            <ImageView
-                                android:layout_width="50dp"
-                                android:layout_height="30dp"
-                                android:layout_gravity="center"
-                                app:srcCompat="@drawable/ic_account" />
 
 
-                            <EditText
-                                android:id="@+id/edit_name"
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:layout_gravity="center"
-                                android:layout_weight="2"
-                                android:background="@drawable/background_txt"
-                                android:fontFamily="sans-serif-condensed-medium"
-                                android:hint="Name"
-                                android:text="@={vm.userName}"
-                                android:inputType="textPersonName"
-                                android:paddingStart="12dp"
-                                android:textColorHint="@color/gray"
-                                android:paddingLeft="12dp" />
-                            <TextView
-                                android:id="@+id/user_name_error"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:textColor="#ff0000"
-                                android:layout_weight="3"
-                                android:visibility="@{vm.userNameError?View.VISIBLE:View.GONE}"
-
-                                android:text="please enter valid user name"
-/>
-                        </LinearLayout>
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginTop="18dp"
-                            android:layout_marginRight="16dp"
-                            android:orientation="horizontal"
-                            android:weightSum="5">
-
-                            <ImageView
-                                android:layout_width="50dp"
-                                android:layout_height="30dp"
-                                android:layout_gravity="center"
-                                app:srcCompat="@drawable/ic_account" />
-
-
-                            <EditText
-                                android:id="@+id/edit_email_signup"
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:layout_gravity="center"
-                                android:layout_weight="2"
-                                android:background="@drawable/background_txt"
-                                android:fontFamily="sans-serif-condensed-medium"
-                                android:hint="Email"
-                                android:text="@={vm.email}"
-                                android:inputType="textEmailAddress"
-                                android:paddingStart="12dp"
-                                android:textColorHint="@color/gray"
-                                android:paddingLeft="12dp" />
-                            <TextView
-                                android:id="@+id/email_error"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:textColor="#ff0000"
-                                android:layout_weight="3"
-                                android:visibility="@{vm.emailError?View.VISIBLE:View.GONE}"
-
-                                android:text="please enter valid email"
-                                />
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginTop="18dp"
-                            android:layout_marginRight="16dp"
-                            android:orientation="horizontal"
-                            android:weightSum="5">
-                            <ImageView
-                                android:layout_width="50dp"
-                                android:layout_height="30dp"
-                                android:layout_gravity="center"
-                                app:srcCompat="@drawable/ic_lock" />
-                            <com.google.android.material.textfield.TextInputLayout
+                            <com.google.android.material.textfield.TextInputEditText
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:textColorHint="@color/gray"
-                                app:hintTextColor="@color/gray"
-                                tools:ignore="MissingConstraints"
-                                app:passwordToggleTint="@color/gray"
-                                app:passwordToggleEnabled="true">
+                                android:layout_marginStart="15dp"
+                                android:hint="Email"
+                                android:text="@={vm.email}"
+                                android:inputType="textEmailAddress" />
+                            <TextView
+                                android:id="@+id/email_error"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textColor="#ff0000"
+                                android:layout_marginStart="15dp"
+                                android:visibility="@{vm.emailError?View.VISIBLE:View.GONE}"
 
-                                <EditText
-                                    android:id="@+id/edit_password_sign_up"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:background="@drawable/background_txt"
-                                    android:fontFamily="sans-serif-condensed-medium"
-                                    android:ems="5"
-                                    android:inputType="textPassword"
-                                    android:hint="Password"
-                                    android:text="@={vm.password}"
-                                    android:textColor="@color/black"
-                                    />
-                                <TextView
-                                    android:id="@+id/password_error"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="0dp"
-                                    android:textColor="#ff0000"
-                                    android:ems="5"
-                                    android:visibility="@{vm.passwordError?View.VISIBLE:View.GONE}"
+                                android:text="@={vm.emailErrorMessage}"
+                                />
 
-                                    android:text="please enter valid user name"/>
-                            </com.google.android.material.textfield.TextInputLayout>
-                        </LinearLayout>
+                        >
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/text_input_username"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:counterEnabled="true"
+                            app:counterMaxLength="15"
+                            app:errorEnabled="true">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="Username"
+                                android:layout_marginStart="15dp"
+                                android:text="@={vm.userName}"
+                                android:inputType="text" />
+                            <TextView
+                                android:id="@+id/userName_error"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textColor="#ff0000"
+                                android:layout_marginStart="15dp"
+                                android:visibility="@{vm.userNameError?View.VISIBLE:View.GONE}"
+
+                                android:text="@={vm.userNameErrorMessage}"
+                                />
+                        </com.google.android.material.textfield.TextInputLayout>
+                        >
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/text_input_password"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:errorEnabled="true"
+                            app:passwordToggleEnabled="true">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="Password"
+                                android:layout_marginStart="15dp"
+                                android:text="@={vm.password}"
+                                android:inputType="textPassword" />
+                            <TextView
+                                android:id="@+id/pass_error"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textColor="#ff0000"
+                                android:layout_marginStart="15dp"
+                                android:visibility="@{vm.passwordError?View.VISIBLE:View.GONE}"
+                                android:text="@={vm.passErrorMessage}"
+                                />
+                        </com.google.android.material.textfield.TextInputLayout>
 
 
+                    </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/linearLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="16dp"
+                        android:orientation="horizontal"
+                        android:paddingStart="12dp"
+                        android:paddingEnd="12dp"
+                        android:textColor="@android:color/black"
+                        android:textColorHint="#B5B5B5"
+                        android:weightSum="2"
+                        app:layout_constraintTop_toBottomOf="@id/text_input_password"
+                        tools:ignore="Autofill,LabelFor,RtlSymmetry">
+
+                        <TextView
+                            android:id="@+id/txt_parent"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:hint="parent"
+                            android:textColor="@android:color/black" />
+                        <Spinner
+                            android:id="@+id/spinner_parent"
+                            android:layout_width="0dp"
+                            android:selectedItemPosition="@={vm.selecteUserPosition}"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_weight="1"
+                            android:gravity="start|center"
+                            android:textColor="@android:color/black" />
+
+                    </LinearLayout>
 
                         <Button
                             android:id="@+id/button_sign_up"
@@ -246,6 +224,7 @@
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintEnd_toEndOf="parent"
+                                android:layout_marginBottom="10dp"
 
                                  />
 
@@ -257,20 +236,13 @@
                                 android:text="@string/login"
                                 android:textColor="#3647A3"
                                 android:textSize="16sp"
+                                android:layout_marginBottom="10dp"
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintStart_toEndOf="@+id/text_sign_in" />
 
                         </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-
-
-
-
-
                     </LinearLayout>
 
-                </LinearLayout>
             </androidx.cardview.widget.CardView>
 
         </androidx.constraintlayout.widget.ConstraintLayout>

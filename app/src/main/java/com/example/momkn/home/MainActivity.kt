@@ -10,6 +10,8 @@ import android.location.Location
 import android.os.Bundle
 import android.os.Looper
 import android.util.Log
+import android.view.View
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -18,6 +20,12 @@ import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import com.example.momkn.R
 import com.example.momkn.databinding.ActivityMainBinding
+import com.example.momkn.fireStoreDataBase.UsersDao
+import com.example.momkn.fireStoreDataBase.model.DataHolder
+import com.example.momkn.fireStoreDataBase.model.User
+import com.example.momkn.login.LoginActivity
+import com.example.momkn.viewmodel.LoginViewModel
+import com.example.momkn.viewmodel.RegisterviewModel
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.common.api.ResolvableApiException
 import com.google.android.gms.location.*
@@ -27,6 +35,8 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.ktx.toObject
 
 class MainActivity :AppCompatActivity() ,OnMapReadyCallback {
     lateinit var binding:ActivityMainBinding
@@ -47,9 +57,7 @@ class MainActivity :AppCompatActivity() ,OnMapReadyCallback {
             reuestLocationPermissionFromUser()
         }
         binding.mapView.getMapAsync(this)
-
     }
-
     var googleMap: GoogleMap? =null
     var userLocation: Location?=null
     var userMarker : Marker? = null
@@ -72,24 +80,40 @@ class MainActivity :AppCompatActivity() ,OnMapReadyCallback {
         super.onDestroy()
         binding.mapView.onDestroy()
     }
-
-
     fun changeUserLocationOnMap(){
 
         if (googleMap==null)return
         if (userLocation==null)return
+         val s =RegisterviewModel.auth.currentUser!!.uid +""
+        UsersDao.getAllUsers({
+            if (it.isSuccessful) {
+                for (document in it.getResult()) {
+                    val user = document.toObject<User>()
+                    if(user.parentId==s){
+                        Log.i("parentId" , user.parentId!!)
+                        val markerOptions = MarkerOptions();
+                        markerOptions.position(LatLng(user.lat!!,user.lang!!));
+                        markerOptions.title("Child location   " + user.name)
+                        userMarker = googleMap?.addMarker(markerOptions)
+
+                    }
+
+                }
+
+            }
+        })
+        //
 
         val markerOptions = MarkerOptions();
         markerOptions.position(LatLng(userLocation!!.latitude,userLocation!!.longitude));
         markerOptions.title("user location")
         // markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.marker))
-        if (userMarker==null)
+       if (userMarker==null)
             userMarker = googleMap?.addMarker(markerOptions)
         else {
             userMarker?.position= LatLng(userLocation!!.latitude,userLocation!!.longitude)
         }
-        googleMap?.
-        animateCamera(CameraUpdateFactory.newLatLngZoom(LatLng(userLocation!!.latitude,userLocation!!.longitude),12.0f))
+       // googleMap?.animateCamera(CameraUpdateFactory.newLatLngZoom(LatLng(userLocation!!.latitude,userLocation!!.longitude),12.0f))
 
         if (ActivityCompat.checkSelfPermission(
                 this,
@@ -210,6 +234,19 @@ class MainActivity :AppCompatActivity() ,OnMapReadyCallback {
                 Log.e("location",""+
                         location.latitude+" "+location.longitude)
                 userLocation  =location
+                //
+                if(RegisterviewModel.auth.currentUser != null){
+                 UsersDao.updateUser(RegisterviewModel.auth.currentUser?.uid?:"",{
+                     if (it.isSuccessful){
+
+                         changeUserLocationOnMap()
+                     }
+                 },location.latitude,location.longitude)
+
+
+                }
+
+                //
                 changeUserLocationOnMap()
 
             }
@@ -272,6 +309,14 @@ class MainActivity :AppCompatActivity() ,OnMapReadyCallback {
         dialogBuilder.setNegativeButton(negActionName,negAction)
         dialogBuilder.setCancelable(isCancelable)
         dialogBuilder.show()
+    }
+
+    fun logout(view: View) {
+        FirebaseAuth.getInstance().signOut()
+        DataHolder.authUser= null
+        DataHolder.dataBaseUser= null
+        startActivity(Intent(this,LoginActivity::class.java))
+        finish()
     }
 
 
