@@ -1,13 +1,10 @@
 package com.example.momkn.viewmodel
 
 import android.app.Application
-import android.content.Context
 import android.util.Log
 import android.util.Patterns
-import android.util.SparseArray
 import androidx.databinding.ObservableField
 import androidx.lifecycle.MutableLiveData
-import com.example.momkn.R
 import com.example.momkn.base.BaseViewModel
 import com.example.momkn.fireStoreDataBase.UsersDao
 import com.example.momkn.fireStoreDataBase.model.DataHolder
@@ -17,8 +14,6 @@ import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import java.util.regex.Pattern
-import android.widget.ArrayAdapter
-import com.google.firebase.firestore.QueryDocumentSnapshot
 import com.google.firebase.firestore.ktx.toObject
 
 
@@ -28,7 +23,7 @@ class RegisterviewModel(application: Application) : BaseViewModel<NavigatorRegis
     val password = ObservableField<String>()
     val selecteUserPosition  = ObservableField<Int>()
     companion object{
-        var listOfUser : ArrayList<User> = ArrayList()
+        var listOfUser : MutableList<User> = mutableListOf()
         var auth :FirebaseAuth =FirebaseAuth.getInstance()
     }
 
@@ -95,8 +90,8 @@ class RegisterviewModel(application: Application) : BaseViewModel<NavigatorRegis
         }
     }
 
-    fun test() {
-        UsersDao.getAllUsers({
+   fun test() {
+      UsersDao.getAllUsersRegister({
             if (it.isSuccessful) {
                 for (document in it.getResult()) {
                     Log.i("Registerviewmodel", document.id + " => " + document.data)
@@ -109,7 +104,24 @@ class RegisterviewModel(application: Application) : BaseViewModel<NavigatorRegis
                 Log.i("Registerviewmodel", listOfUser.size.toString())
             }
         })
+     /*  UsersDao.getAllUsers({
+               snapshots, e ->
+          *//* if (e != null) {
+               //Log.w(TAG, "listen:error", e)
+               return@addSnapshotListener
+           }*//*
+
+           for (dc in snapshots!!.documentChanges) {
+               when (dc.type) {
+                   DocumentChange.Type.ADDED -> Log.d("Register", "New city: ${dc.document.data}")
+                   DocumentChange.Type.MODIFIED -> Log.d("Register", "Modified city: ${dc.document.data}")
+                   DocumentChange.Type.REMOVED -> Log.d("Register", "Removed city: ${dc.document.data}")
+               }
+           }
+
+       })*/
     }
+
 
     fun isValidData(): Boolean {
         var isValid = true;

@@ -29,24 +29,12 @@
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginTop="10dp">
 
-                <TextView
-                    android:id="@+id/text"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="1"
-                    android:fontFamily="sans-serif-condensed-medium"
-                    android:gravity="center"
-                    android:text="@string/sign_up"
-                    android:textColor="#326C34"
-                    android:textSize="50sp" />
-
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:layout_gravity="center"
                     android:layout_marginTop="10dp"
-                    android:layout_weight="1"
+                    android:layout_weight="2"
                     android:contentDescription="@string/todo"
                     android:src="@drawable/alahly"
                     app:civ_border_color="#326C34"
@@ -74,7 +62,7 @@
                     android:layout_height="match_parent"
                     android:orientation="vertical"
                     android:weightSum="10"
-                    android:background="@drawable/background_btn_login">
+                    android:background="@drawable/bc_linear">
 
 
                     <LinearLayout
@@ -180,17 +168,25 @@
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
-                            android:hint="parent"
-                            android:textColor="@android:color/black" />
-                        <Spinner
-                            android:id="@+id/spinner_parent"
+                            android:text="parent"
+                            android:textSize="20sp"
+                            android:textColor="#326C34" />
+                        <RelativeLayout
                             android:layout_width="0dp"
-                            android:selectedItemPosition="@={vm.selecteUserPosition}"
-                            android:layout_height="match_parent"
-                            android:layout_gravity="center_horizontal"
+                            android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:gravity="start|center"
-                            android:textColor="@android:color/black" />
+                            android:background="@drawable/bg_item_spinner"
+                            >
+
+                            <Spinner
+                                android:id="@+id/spinner_parent"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center_horizontal"
+                                android:gravity="start|center"
+                                android:selectedItemPosition="@={vm.selecteUserPosition}"
+                                android:textColor="#326C34" />
+                        </RelativeLayout>
 
                     </LinearLayout>
 
@@ -204,7 +200,7 @@
                             android:background="@drawable/background_btn_login"
                             android:text="@string/sign_up"
                             android:textAllCaps="false"
-                            android:textColor="#326C34"
+                            android:textColor="@color/white"
                             android:textSize="22sp"
                             app:backgroundTint="#326C34"
                             android:onClick="@{()->vm.signUp()}"/>

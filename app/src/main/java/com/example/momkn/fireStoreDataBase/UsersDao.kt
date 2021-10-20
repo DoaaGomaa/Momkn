@@ -3,6 +3,7 @@ package com.example.momkn.fireStoreDataBase
 import com.example.momkn.fireStoreDataBase.model.User
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.firestore.DocumentSnapshot
+import com.google.firebase.firestore.EventListener
 import com.google.firebase.firestore.QuerySnapshot
 
 class UsersDao {
@@ -21,10 +22,14 @@ class UsersDao {
                 .addOnCompleteListener(onCompleteListener)
         }
 
-        fun getAllUsers(onCompleteListener: OnCompleteListener<QuerySnapshot>) {
+        fun getChildUsers(onsnapListner: EventListener<QuerySnapshot> , userId : String) {
+            DataBase.getUsers().whereEqualTo("parentId",userId ).addSnapshotListener(onsnapListner)
+
+        }
+        fun getAllUsersRegister(onCompleteListener: OnCompleteListener<QuerySnapshot>){
             DataBase.getUsers()
                 .get()
-                .addOnCompleteListener(onCompleteListener)
+             .addOnCompleteListener(onCompleteListener)
         }
 
         fun updateUser(

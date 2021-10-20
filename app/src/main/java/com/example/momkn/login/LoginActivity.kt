@@ -24,7 +24,7 @@ class LoginActivity : BaseActivity<FragmentLogonBinding, LoginViewModel>(), Navi
 
     override fun openRegister() {
        startActivity(Intent(this,RegisterActivity::class.java))
-        finish()
+       // finish()
 
     }
 

@@ -20,7 +20,7 @@ class RegisterActivity : BaseActivity<FragmentRegisterBinding, RegisterviewModel
         viewDataBinding.vm = viewModel
         viewModel.navigaror = this
         viewModel.listOfUserNameM!!.observe(this,{
-            adapter = ArrayAdapter(this@RegisterActivity ,android.R.layout.simple_spinner_dropdown_item,it
+            adapter = ArrayAdapter(this@RegisterActivity ,R.layout.spinner_item,it
             )
             adapter!!.notifyDataSetChanged()
             viewDataBinding.spinnerParent.setAdapter(adapter)
@@ -47,7 +47,7 @@ class RegisterActivity : BaseActivity<FragmentRegisterBinding, RegisterviewModel
     }
 
     override fun openLogin() {
-        startActivity(Intent(this,LoginActivity::class.java))
+        //startActivity(Intent(this,LoginActivity::class.java))
         finish()
 
     }

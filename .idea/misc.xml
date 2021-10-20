@@ -5,12 +5,19 @@
       <map>
         <entry key="..\:/Users/Doaa/AndroidStudioProjects/Momkn/app/src/main/res/drawable/background.xml" value="0.2703125" />
         <entry key="..\:/Users/Doaa/AndroidStudioProjects/Momkn/app/src/main/res/drawable/background_btn_login.xml" value="0.2703125" />
+        <entry key="..\:/Users/Doaa/AndroidStudioProjects/Momkn/app/src/main/res/drawable/bc_linear.xml" value="0.26614583333333336" />
+        <entry key="..\:/Users/Doaa/AndroidStudioProjects/Momkn/app/src/main/res/drawable/bg_item_spinner.xml" value="0.26614583333333336" />
         <entry key="..\:/Users/Doaa/AndroidStudioProjects/Momkn/app/src/main/res/drawable/ic_account.xml" value="0.2703125" />
         <entry key="..\:/Users/Doaa/AndroidStudioProjects/Momkn/app/src/main/res/drawable/ic_lock.xml" value="0.2703125" />
+        <entry key="..\:/Users/Doaa/AndroidStudioProjects/Momkn/app/src/main/res/font/abhaya_libre.xml" value="0.28020833333333334" />
         <entry key="..\:/Users/Doaa/AndroidStudioProjects/Momkn/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/Doaa/AndroidStudioProjects/Momkn/app/src/main/res/layout/fragment_logon.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Doaa/AndroidStudioProjects/Momkn/app/src/main/res/layout/fragment_maps.xml" value="0.12360688956433637" />
         <entry key="..\:/Users/Doaa/AndroidStudioProjects/Momkn/app/src/main/res/layout/fragment_register.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Doaa/AndroidStudioProjects/Momkn/app/src/main/res/layout/spinner_item.xml" value="0.25" />
+        <entry key="..\:/Users/Doaa/AppData/Local/Android/Sdk/platforms/android-31/data/res/layout/simple_list_item_1.xml" value="0.25" />
+        <entry key="..\:/Users/Doaa/AppData/Local/Android/Sdk/platforms/android-31/data/res/layout/simple_spinner_dropdown_item.xml" value="0.25" />
+        <entry key="..\:/Users/Doaa/AppData/Local/Android/Sdk/platforms/android-31/data/res/layout/simple_spinner_item.xml" value="0.25" />
       </map>
     </option>
   </component>

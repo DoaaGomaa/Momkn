@@ -7,6 +7,9 @@ class User() {
     var parentId : String? = null
     var lat : Double? = null
     var lang :Double ? = null
+    override fun toString(): String {
+        return "User(name=$name)"
+    }
 
 
 }
